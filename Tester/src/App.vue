@@ -27,7 +27,7 @@
               <i class="icon">☁️</i> Upload
             </button>
             <button @click="clearFiles" class="button danger" :disabled="!files.length">
-              <i class="icon">❌</i> Clear
+              <i class="icon">X </i> 
             </button>
           </div>
           
@@ -57,7 +57,7 @@
 
           <!-- Empty State -->
           <div v-if="!files.length" class="empty-state">
-            <div class="empty-icon">☁️</div>
+            <div class="empty-icon"><img src="./assets/CC Blk logo.png" alt=""></div>
             <p>Drag and drop files here or click to browse</p>
           </div>
         </div>
@@ -141,12 +141,18 @@ export default {
 </script>
 
 <style scoped>
-/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* Base Styles */ 
 .upload-container {
   max-width: 800px;
   margin: 2rem auto;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:300;
+  
 }
+
 
 .card {
   background: white;
@@ -168,11 +174,11 @@ export default {
 }
 
 .toast.info {
-  background: #3B82F6; /* blue */
+  background: #212121; /* blue */
 }
 
 .toast.success {
-  background: #10B981; /* green */
+  background: #D0DFCC; /* green */
 }
 
 .toast.error {
@@ -197,6 +203,7 @@ export default {
 .button-group {
   display: flex;
   gap: 0.5rem;
+  
 }
 
 .button {
@@ -204,11 +211,13 @@ export default {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 20px;
+  border-radius: 50px;
   border: 1px solid #ddd;
   background: white;
   cursor: pointer;
-  font-weight: 500;
+ font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:300;
   transition: all 0.2s;
 }
 
@@ -226,16 +235,31 @@ export default {
   color: #4B5563;
 }
 
-.button.success {
-  background: #10B981;
+.button.secondary:hover {
+  background-color: #212121;
   color: white;
-  border-color: #10B981;
+}
+
+.button.success {
+  background: white;
+  color: #212121;
+  border-color: #D0DFCC;
+}
+
+.button.success:hover {
+  background-color: #D0DFCC;
+  color: #212121;
 }
 
 .button.danger {
-  background: #EF4444;
-  color: white;
-  border-color: #EF4444;
+  background: white;
+  color: #212121;
+  border-color: #F0F1A5;
+}
+
+.button.danger:hover {
+  background-color: #F0F1A5;
+  color: #212121;
 }
 
 .button.small {
@@ -260,7 +284,7 @@ export default {
 
 .progress-bar {
   height: 100%;
-  background: #3B82F6;
+  background: #D0DFCC;
   border-radius: 4px;
   transition: width 0.3s;
 }
@@ -332,8 +356,14 @@ export default {
 }
 
 .badge.warning {
-  background: #FEF3C7;
-  color: #92400E;
+  border-color: #212121;
+  background: white;
+  color: #212121;
+}
+
+.badge.warning:hover{
+  background-color: #FEF3C7;
+  color: #212121;
 }
 
 /* Empty State */
@@ -348,9 +378,28 @@ export default {
 }
 
 .empty-icon {
-  font-size: 3rem;
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
-  opacity: 0.5;
+}
+
+.empty-icon img {
+  width: 80px;        /* Default size */
+  height: auto;
+  max-width: 100%;
+}
+
+/* Adjust for different screen sizes */
+@media (min-width: 768px) {
+  .empty-icon img {
+    width: 100px;     /* Slightly larger on bigger screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .empty-icon img {
+    width: 60px;      /* Smaller on mobile */
+  }
 }
 
 /* Responsive */
