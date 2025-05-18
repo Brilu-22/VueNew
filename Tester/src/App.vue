@@ -70,18 +70,18 @@
 export default {
   data() {
     return {
-      files: [],
-      uploadProgress: 0,
+      files: [], // Stores all selected files
+      uploadProgress: 0, // Tracks upload percentage (0-100)
       toast: {
         visible: false,
         message: '',
-        severity: 'info'
+        severity: 'info' // Can be 'info', 'success', 'error'
       }
     }
   },
   computed: {
     totalSize() {
-      return this.files.reduce((sum, file) => sum + file.size, 0)
+      return this.files.reduce((sum, file) => sum + file.size, 0) // calculates total size of files in bytes 
     }
   },
   methods: {
@@ -113,7 +113,7 @@ export default {
           if (this.uploadProgress >= 100) {
             clearInterval(interval)
             this.showToast('Files uploaded successfully!', 'success')
-            // In a real app, you would process the files here
+            // In a real app, we need to process the files here
             console.log('Files to upload:', this.files)
           }
         }, 300)
